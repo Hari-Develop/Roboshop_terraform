@@ -43,6 +43,8 @@ resource "aws_route53_record" "records" {
     zone_id = "Z087200837M4TMDK3PVWB"
     name = "${each.value["name"]}-dev.unlockers.online"
     records = [aws_instance.instance.private_ip]
+    type = "A"
+    ttl = "30"
 }
 
 
