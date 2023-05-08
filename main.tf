@@ -31,7 +31,6 @@ resource "aws_instance" "instance" {
     for_each = var.app_server
     ami = "ami-0b5a2b5b8f2be4ec2"
     instance_type = each.value["instance_type"]
-    security_groups = [data.aws_security_group.allow-all.id]
 
     tags = {
         name = each.value["name"]
