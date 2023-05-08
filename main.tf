@@ -32,11 +32,19 @@ resource "aws_instance" "instance" {
     ami = "ami-0b5a2b5b8f2be4ec2"
     instance_type = each.value["instance_type"]
     vpc_security_group_ids = [data.aws_security_group.allow-all.id]
-    
+
     tags = {
-        name = each.value["name"]
+        Name = each.value["name"]
     }
 }
+
+resource "aws_route53_record" "records" {
+    for_each = var.app_server
+    zone_id = "Z087200837M4TMDK3PVWB"
+    name = "${each.value["name"]}-dev.unlockers.online"
+    records = [aws_instance.instance.private_ip]
+}
+
 
 
 
