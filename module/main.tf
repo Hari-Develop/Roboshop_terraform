@@ -18,7 +18,7 @@ connection {
     type     = "ssh"
     user     = "centos"
     password = "DevOps321"
-    host     = [aws_instance.instance.private_ip]
+    host     = "[aws_instance.instance.private_ip]"
   }
 
 provisioner "remote-exec" {
