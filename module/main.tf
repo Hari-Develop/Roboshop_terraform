@@ -33,7 +33,7 @@ provisioner "remote-exec" {
 
 resource "aws_route53_record" "records" {
     zone_id = "Z087200837M4TMDK3PVWB"
-    name = "${var.app_server_name}-dev.unloerckers.online"
+    name = "${var.app_server_name}-dev.unlockers.online"
     records = [aws_instance.instance.private_ip]
     type = "A"
     ttl = "30"
