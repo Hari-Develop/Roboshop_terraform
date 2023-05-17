@@ -24,6 +24,7 @@ provisioner "remote-exec" {
   inline = [
     "rm -rf roboshop-shell",
     "git clone https://github.com/Hari-Develop/roboshop-shell.git",
+    "cd roboshop-shell",
     "sudo bash ${var.app_server_name}.sh ${var.password}"
     ]
 }
