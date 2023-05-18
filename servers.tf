@@ -11,7 +11,7 @@ module "databases_server" {
 
 module "app_server" {
 
-  depends_on = [databases_server]
+  depends_on = [module.databases_server]
 
   for_each = var.app_server
 
