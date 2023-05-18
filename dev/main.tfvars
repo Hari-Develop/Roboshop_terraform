@@ -25,7 +25,10 @@ app_server = {
         instance_type = "t3.micro"
         password = "RoboShop@1"
     }
-     redis = {
+}
+
+databases_server = {
+    redis = {
         name = "redis"
         instance_type = "t3.micro"
     }
