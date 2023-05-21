@@ -12,13 +12,6 @@ resource "aws_instance" "instance" {
 resource "null_resource" "provisioner" {
 depends_on = [ aws_instance.instance,aws_route53_record.records ]
 
-connection {
-    type     = "ssh"
-    user     = "centos"
-    password = "DevOps321"
-    host = aws_instance.instance.private_ip
-  }
-
 provisioner "remote-exec" {
 
   connection {
@@ -32,7 +25,6 @@ provisioner "remote-exec" {
 }
 
 }
-
 
 resource "aws_route53_record" "records" {
     zone_id = "Z087200837M4TMDK3PVWB"
