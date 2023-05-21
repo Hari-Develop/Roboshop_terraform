@@ -28,7 +28,7 @@ provisioner "remote-exec" {
     host = aws_instance.instance.private_ip
   }
 
-  inline = var.Application == "database" ? local.database_commands : local.app_commands
+  inline = var.app_type == "database" ? local.database_commands : local.app_commands
 }
 
 }
