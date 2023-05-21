@@ -10,9 +10,6 @@ resource "aws_instance" "instance" {
 }
 
 resource "null_resource" "provisioner" {
-
-count = var.provisioner ? 1 : 0
-
 depends_on = [ aws_instance.instance,aws_route53_record.records ]
 
 connection {
@@ -23,12 +20,15 @@ connection {
   }
 
 provisioner "remote-exec" {
-  inline = [
-    "rm -rf roboshop-shell",
-    "git clone https://github.com/Hari-Develop/roboshop-shell.git",
-    "cd roboshop-shell",
-    "sudo bash ${var.app_server_name}.sh ${var.password}"
-    ]
+
+  connection {
+    type     = "ssh"
+    user     = "centos"
+    password = "DevOps321"
+    host = aws_instance.instance.private_ip
+  }
+
+  inline = var.Application == "database" ? local.database_commands : local.app_commands
 }
 
 }

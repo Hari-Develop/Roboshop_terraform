@@ -7,6 +7,7 @@ module "databases_server" {
   password = lookup(each.value,"password","null")
   instance_type = each.value["instance_type"]
   provisioner = true
+  app_type = "database"
 }
 
 module "app_server" {
@@ -20,4 +21,6 @@ module "app_server" {
   app_server_name = each.value["name"]
   password = lookup(each.value,"password","null")
   instance_type = each.value["instance_type"]
+  provisioner = true
+  app_type = "Application"
 }
