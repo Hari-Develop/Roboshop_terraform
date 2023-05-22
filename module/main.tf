@@ -56,7 +56,7 @@ resource "aws_iam_role" "instance_role" {
   }
 }
 
-resource "aws_iam_policy" "ssm-ps-policy" {
+resource "aws_iam_role_policy" "ssm-ps-policy" {
   name        = "${var.app_server_name}-${var.env}-role-policy"
   role        = "aws_iam_role.instance_role.id"
   policy = jsonencode({
