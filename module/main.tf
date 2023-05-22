@@ -13,15 +13,14 @@ resource "aws_instance" "instance" {
 resource "null_resource" "provisioner" {
 depends_on = [ aws_instance.instance,aws_route53_record.records ]
 
-provisioner "remote-exec" {
-
-  connection {
+    connection {
     type     = "ssh"
     user     = "centos"
     password = "DevOps321"
     host = aws_instance.instance.private_ip
   }
 
+provisioner "remote-exec" {
   inline = var.app_type == "database" ? local.database_commands : local.app_commands
 }
 
