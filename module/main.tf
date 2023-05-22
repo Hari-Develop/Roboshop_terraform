@@ -57,4 +57,25 @@ resource "aws_iam_role" "instance_role" {
   }
 }
 
+resource "aws_iam_role_policy" "ssm-ps-policy" {
+  name        = "${var.app_server_name}-${var.env}-role-policy"
+  role        = aws_iam_role.instance_role.id
+
+  policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ssm:GetParameterHistory",
+                "ssm:GetParametersByPath",
+                "ssm:GetParameters",
+                "ssm:GetParameter"
+            ],
+            "Resource": "arn:aws:ssm:us-east-1:655343820221:parameter/${var.env}.${var.app_server_name}.*"
+        }
+    ]
+})
+}
 
