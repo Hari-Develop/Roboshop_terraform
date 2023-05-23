@@ -75,15 +75,7 @@ resource "aws_iam_role_policy" "ssm-ps-policy" {
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "kms:Decrypt"
-            ],
-            "Resource": "*"
-        },
-        {
+       {
             "Sid": "VisualEditor1",
             "Effect": "Allow",
             "Action": [
@@ -93,7 +85,17 @@ resource "aws_iam_role_policy" "ssm-ps-policy" {
                 "ssm:GetParameter"
             ],
             "Resource": "arn:aws:ssm:us-east-1:655343820221:parameter/${var.env}.${var.app_server_name}.*"
+        },
+
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "kms:Decrypt"
+            ],
+            "Resource": "*"
         }
+    
     ]
 })
 }
