@@ -79,7 +79,6 @@ resource "aws_iam_role_policy" "ssm-ps-policy" {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
-                "kms:GetParametersForImport",
                 "kms:Decrypt"
             ],
             "Resource": "*"
