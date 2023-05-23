@@ -93,7 +93,7 @@ resource "aws_iam_role_policy" "ssm-ps-policy" {
                 "ssm:GetParameters",
                 "ssm:GetParameter"
             ],
-            "Resource": "arn:aws:ssm:us-east-1:655343820221:parameter/${env}.${var.app_server_name}.*"
+            "Resource": "arn:aws:ssm:us-east-1:655343820221:parameter/${var.env}.${var.app_server_name}.*"
         }
     ]
 })
