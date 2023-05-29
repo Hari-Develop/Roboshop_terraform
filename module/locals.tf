@@ -22,5 +22,4 @@ locals {
       Name = "${var.app_server_name}-${var.env}"
     }
 
-
 }
