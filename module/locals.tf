@@ -15,7 +15,7 @@ locals {
 
     app_tags = {
       Name = "${var.app_server_name}-${var.env}"
-      Monitor = true
+      Monitor = "true"
     }
 
     db_tags = {
