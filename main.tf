@@ -27,6 +27,3 @@ module "app" {
 
 }
 
-output "subnets" {
-  value = module.subnets
-}
