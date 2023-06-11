@@ -27,3 +27,38 @@ vpc = {
       }
     }
 }
+
+app = {
+    
+  frontend = {
+    instance_type = "t3.small"
+    name = "frontend"
+    subnet_name = "web"
+}
+  catalogue = {
+    instance_type = "t3.micro"
+    name = "catalogue"
+    subnet_name = "app"
+}
+  cart = {
+    instance_type = "t3.micro"
+    name = "cart"
+    subnet_name = "app"
+}
+  shipping = {
+    instance_type = "t3.micro"
+    name = "shipping"
+    subnet_name = "app"
+}
+  user = {
+    instance_type = "t3.micro"
+    name = "user"
+    subnet_name = "app"
+}
+  payment = {
+    instance_type = "t3.micro"
+    name = "payment"
+    subnet_name = "app"
+}
+
+}

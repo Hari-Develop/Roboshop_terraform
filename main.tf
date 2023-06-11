@@ -6,3 +6,10 @@ module "vpc" {
   tags = local.tags
   env = var.env
 }
+
+//module "app" {
+//  source = "git::https://github.com/Hari-Develop/tf_module_app.git"
+//  for_each = var.app
+//  instance_type = each.value["instance_type"]
+
+//}
