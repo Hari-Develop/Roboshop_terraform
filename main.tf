@@ -27,7 +27,6 @@ module "app" {
 
 }
 
-output "subnet_cidrs" {
-  value = aws_subnet.main.*.id
+output "subnets" {
+  value = module.subnets
 }
-
