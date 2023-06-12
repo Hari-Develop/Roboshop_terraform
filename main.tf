@@ -26,7 +26,3 @@ module "app" {
   all_app_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["all_app_cidr"], null), "subnet_cidrs", null)
 
 }
-
-output "subnet_cidrs" {
-  value = aws_subnet.main.*.id
-}
