@@ -19,7 +19,7 @@ module "app" {
 
   env = var.env
   bastion_cidr = var.bastion_cidr
-  tags = local.tags
+  tags = local.asg_tags
 
 
   subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
