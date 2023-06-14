@@ -11,6 +11,25 @@ module "vpc" {
   
 }
 
+
+
+module "docdb" {
+  source = "git::https://github.com/Hari-Develop/tf_module_docdb.git"
+
+  for_each = var.docdb
+  subnets = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
+  all_db_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["all_db_cidr"], null), "subnet_cidrs", null)
+  tags = local.tags
+  env = var.env
+  vpc_id = local.vpc_id
+  kms_arn = var.kms_arn
+  engine_version = each.value["engine_version"]
+  
+  instance_count = each.value["instance_count"]
+  instance_class = each.value["instance_class"]
+}
+
+
 module "app" {
   source = "git::https://github.com/Hari-Develop/tf_module_app.git"
   for_each = var.app
@@ -30,3 +49,4 @@ module "app" {
   vpc_id = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   all_app_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["all_app_cidr"], null), "subnet_cidrs", null)
 }
+
