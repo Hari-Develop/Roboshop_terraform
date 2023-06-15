@@ -3,7 +3,7 @@ bastion_cidr = ["172.31.6.14/32"]
 default_vpc_id = "vpc-05f71cf10b08267f1"
 default_vpc_cidr = "172.31.0.0/16"
 default_vpc_rtb = "rtb-0261695bf0f118fe0"
-kms_arn = "abhbbjdudb"
+kms_arn = "arn:aws:kms:us-east-1:513840145359:key/7c7c9941-f247-48e3-87d9-479971eb6ac6"
 
 vpc = {
     main = {
@@ -60,8 +60,8 @@ app = {
 
   docdb = {
     main = {
-      subnet_name = "app"
-      all_db_cidr = "db"
+      subnet_name = "db"
+      all_db_cidr = "app"
       engine_version = "4.0.0"
       instance_count = 1
       instance_class = "db.t3.medium"
