@@ -29,6 +29,22 @@ module "docdb" {
   instance_class = each.value["instance_class"]
 }
 
+module "rds" {
+  source = "git::https://github.com/Hari-Develop/tf_module_rds.git"
+
+  for_each = var.rds
+  subnets = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
+  all_db_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["all_db_cidr"], null), "subnet_cidrs", null)
+  tags = local.tags
+  env = var.env
+  vpc_id = local.vpc_id
+  kms_arn = var.kms_arn
+  engine_version = each.value["engine_version"]
+  
+  instance_count = each.value["instance_count"]
+  instance_class = each.value["instance_class"]
+}
+
 
 module "app" {
   source = "git::https://github.com/Hari-Develop/tf_module_app.git"
