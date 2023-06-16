@@ -45,6 +45,22 @@ module "rds" {
   instance_class = each.value["instance_class"]
 }
 
+module "elasticache" {
+  source = "git::https://github.com/Hari-Develop/tf_module_elasticCache.git"
+
+  for_each = var.elasticache
+  subnets = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
+  all_db_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["all_db_cidr"], null), "subnet_cidrs", null)
+  tags = local.tags
+  env = var.env
+  vpc_id = local.vpc_id
+  kms_arn = var.kms_arn
+  engine_version = each.value["engine_version"]
+  num_node_groups = each.value["num_node_groups"]
+  node_type = each.value["node_type"]
+  replicas_per_node_group = each.value["replicas_per_node_group"]
+}
+
 
 module "app" {
   source = "git::https://github.com/Hari-Develop/tf_module_app.git"

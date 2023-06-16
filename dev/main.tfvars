@@ -78,4 +78,18 @@ app = {
     }
   }
 
+
+  elasticache = {
+    main = {
+      subnet_name = "db"
+      all_db_cidr = "app"
+      engine_version = "6.x"
+      num_node_groups = 1
+      node_type = "cache.t3.small"
+      replicas_per_node_group = 1
+    }
+  }
+
+
+
   

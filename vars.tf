@@ -8,4 +8,5 @@ variable "default_vpc_rtb" {}
 variable "docdb" {}
 variable "kms_arn" {}
 variable "rds" {}
+variable "elasticache" {}
 
