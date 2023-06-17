@@ -72,6 +72,7 @@ module "rabbitmq" {
   vpc_id = local.vpc_id
   kms_arn = var.kms_arn
   instance_type = each.value["instance_type"]
+  bastion_cidr = var.bastion_cidr
 }
 
 
