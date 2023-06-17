@@ -90,6 +90,14 @@ app = {
     }
   }
 
+  rabbitmq = {
+    main = {
+      subnet_name = "db"
+      all_db_cidr = "app"
+      instance_type = "t3.small"
+    }
+  }
+
 
 
   
