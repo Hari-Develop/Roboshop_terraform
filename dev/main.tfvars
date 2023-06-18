@@ -98,6 +98,16 @@ app = {
     }
   }
 
-
-
-  
+  alb = {
+    public = {
+      name = "public"
+      subnets = "public"
+      all_alb_cidr = null
+      internal = false
+    }
+    public = {
+      name = "private"
+      subnets = "app"
+      all_alb_cidr = "web"
+      internal = true
+  }
