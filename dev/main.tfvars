@@ -101,13 +101,13 @@ app = {
   alb = {
     public = {
       name = "public"
-      subnets = "public"
+      subnet_name = "public"
       all_alb_cidr = null
       internal = false
     }
     private = {
       name = "private"
-      subnets = "app"
+      subnet_name = "app"
       all_alb_cidr = "web"
       internal = true
   }
