@@ -105,7 +105,7 @@ app = {
       all_alb_cidr = null
       internal = false
     }
-    public = {
+    private = {
       name = "private"
       subnets = "app"
       all_alb_cidr = "web"
