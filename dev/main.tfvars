@@ -44,6 +44,7 @@ app = {
     desired_capacity   = 2
     max_size           = 5
     min_size           = 2
+    app_port           = 80
 }
   catalogue = {
     instance_type = "t3.micro"
@@ -53,6 +54,7 @@ app = {
     desired_capacity   = 2
     max_size           = 5
     min_size           = 2
+    app_port           = 8080
 }
 
 }
