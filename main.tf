@@ -92,6 +92,8 @@ module "alb" {
 
 
 module "app" {
+
+  depends_on = [ module.vpc, module.alb, module.elasticache, module.docdb, module.elasticache, module.rabbitmq, module.rds ]
   source = "git::https://github.com/Hari-Develop/tf_module_app.git"
   for_each = var.app
   name = each.value["name"]
