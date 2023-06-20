@@ -110,13 +110,13 @@ module "app" {
   tags = local.tags
   domain_name = var.domain_name
   domain_id  = var.domain_id
-  dns_name = lookup(var.app, "dns_name", "${each.value["name"]}-${var.env}")
+  dns_name = each.value["name"] == "frontend" ? each.value["dns_name"] : "${each.value["name"]}-${var.env}"
 
 
   subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
   vpc_id = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   all_app_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["all_app_cidr"], null), "subnet_cidrs", null)
   listener_arn = lookup(lookup(module.alb, "lb_type", null), "listener_arn", null)
-  lb_dns_name = lookup(lookup(module.alb, "lb_type", null), "lb_dns_name", null)
+  lb_dns_name = lookup(lookup(module.alb, "lb_type", null), "dns_name", null)
 }
 
