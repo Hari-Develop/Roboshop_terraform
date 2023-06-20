@@ -4,6 +4,8 @@ default_vpc_id = "vpc-05f71cf10b08267f1"
 default_vpc_cidr = "172.31.0.0/16"
 default_vpc_rtb = "rtb-0261695bf0f118fe0"
 kms_arn = "arn:aws:kms:us-east-1:513840145359:key/7c7c9941-f247-48e3-87d9-479971eb6ac6"
+domain_name = "unlockers.online" 
+domain_id   = "Z09407433C3HCTSY5GY69"
 
 vpc = {
     main = {
@@ -45,6 +47,9 @@ app = {
     max_size           = 5
     min_size           = 2
     app_port           = 80
+    listener_priority  = 1
+    al_type             = "public"
+    dns_name            = "dev"
 }
   catalogue = {
     instance_type = "t3.micro"
@@ -55,6 +60,8 @@ app = {
     max_size           = 5
     min_size           = 2
     app_port           = 8080
+    listener_priority  = 2
+    al_type             = "private"
 }
 
 }
